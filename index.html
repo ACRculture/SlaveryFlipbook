@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipbook Orizzontale - Immagini Native</title>
+    <style>
+        body {
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        /* Il CSS ora deve solo dare l'ombra, al resto pensa il JS */
+        #flipbook {
+            box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenitore vuoto: le pagine verranno generate dinamicamente -->
+    <div id="flipbook"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const flipBookElement = document.getElementById('flipbook');
+
+            const pageFlip = new St.PageFlip(flipBookElement, {
+                width: 800,  
+                height: 565, 
+                size: "stretch",
+                minWidth: 400,
+                maxWidth: 1200,
+                minHeight: 280,
+                maxHeight: 850,
+                maxShadowOpacity: 0.4,
+                showCover: false,
+                mobileScrollSupport: false,
+                usePortrait: false // Forza la visualizzazione orizzontale a due pagine
+            });
+
+            // Metodo diretto: precarica e renderizza le immagini scavalcando i CSS
+            pageFlip.loadFromImages([
+                'pagina-01.jpg', 'pagina-02.jpg', 'pagina-03.jpg', 'pagina-04.jpg',
+                'pagina-05.jpg', 'pagina-06.jpg', 'pagina-07.jpg', 'pagina-08.jpg',
+                'pagina-09.jpg', 'pagina-10.jpg', 'pagina-11.jpg', 'pagina-12.jpg',
+                'pagina-13.jpg', 'pagina-14.jpg', 'pagina-15.jpg', 'pagina-16.jpg',
+                'pagina-17.jpg', 'pagina-18.jpg', 'pagina-19.jpg', 'pagina-20.jpg',
+                'pagina-21.jpg', 'pagina-22.jpg', 'pagina-23.jpg', 'pagina-24.jpg'
+            ]);
+        });
+    </script>
+</body>
+</html>
